@@ -9,5 +9,3 @@ quick hack to print some stats of contamination in a fasta for the Sanger decon 
 
 ## Usage 
 ./curation_stats -f ASSEMBLY.FA -c DECON_FILE
-
-DECONF_FILE is a Sanger GRIT spec decontamination file
