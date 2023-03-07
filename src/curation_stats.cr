@@ -56,6 +56,6 @@ fx.each { |e|
 }
 
 puts <<-HERE
-contaminated basepairs	#{contaminated_bp}/#{total_bp} (#{sprintf("%.2f",contaminated_bp/total_bp*100)}%)
-contaminated sequences	#{contaminated_seq}/#{total_seq} (#{sprintf("%.2f",contaminated_seq/total_seq*100)}%)
+contaminated basepairs	#{contaminated_bp}/#{total_bp} (#{sprintf("%.2f", contaminated_bp/total_bp*100)}%)
+contaminated sequences	#{contaminated_seq}/#{total_seq} (#{sprintf("%.2f", contaminated_seq/total_seq*100)}%)
 HERE
