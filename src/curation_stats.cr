@@ -1,5 +1,4 @@
 #!/usr/bin/env crystal
-# extracts the fasta files form a BTK CSV and fires off curl vs Claudias BLAST server
 # uses Heng Li's fasta parser from Klib
 
 require "option_parser"
@@ -40,10 +39,10 @@ ids = parse_decon_file(con_file)
 fp = GzipReader.new(fasta)
 fx = FastxReader.new(fp)
 
-total_bp = 0
-total_seq = 0
-contaminated_bp = 0
-contaminated_seq = 0
+total_bp = 0_u64
+total_seq = 0_u64
+contaminated_bp = 0_u64
+contaminated_seq = 0_u64
 
 fx.each { |e|
   total_bp += e.seq.size
