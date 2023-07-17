@@ -7,7 +7,7 @@ authors:
 targets:
   curation_stats:
     main: src/curation_stats.cr
-  curation_90:
+  curated_bp:
     main: src/curated_90.cr
 
 crystal: 1.9.0

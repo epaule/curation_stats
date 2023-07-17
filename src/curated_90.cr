@@ -9,7 +9,7 @@ include Klib
 fasta = ""
 
 OptionParser.parse do |parser|
-  parser.banner = "Usage: curates_90 --fasta FASTAFILE"
+  parser.banner = "Usage: #{PROGRAM_NAME} --fasta FASTAFILE"
   parser.on("-f FASTA_FILE", "--fasta=FASTA_FILE", "FASTA file of the assembly (can be compressed)") { |f| fasta = f }
   parser.on("-h", "--help", "Show this help") do
     puts parser
