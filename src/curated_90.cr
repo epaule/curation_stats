@@ -31,7 +31,7 @@ curated_bp = 0_u64
 fx.each { |e|
   total_bp += e.seq.size
 
-  if e.name[0..6].downcase == "super_"
+  if e.name[0..5].downcase == "super_"
     curated_bp += e.seq.size
   end
 }
