@@ -7,7 +7,9 @@ authors:
 targets:
   curation_stats:
     main: src/curation_stats.cr
+  curation_90:
+    main: src/curated_90.cr
 
-crystal: 1.7.2
+crystal: 1.9.0
 
 license: MIT
