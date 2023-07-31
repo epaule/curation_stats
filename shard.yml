@@ -7,7 +7,9 @@ authors:
 targets:
   curation_stats:
     main: src/curation_stats.cr
+  remove_contamination:
+    main: src/remove_contamination.cr
 
-crystal: 1.7.2
+crystal: 1.9.2
 
 license: MIT
