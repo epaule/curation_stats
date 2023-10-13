@@ -7,12 +7,14 @@ require "klib"
 include Klib
 
 con_file = ""
+bed_file = ""
 fasta = ""
 
 OptionParser.parse do |parser|
   parser.banner = "Usage: curation_stats --contamination CONTAMINATION_FILE --fasta FASTAFILE"
   parser.on("-f FASTA_FILE", "--fasta=FASTA_FILE", "FASTA file of the assembly (can be compressed)") { |f| fasta = f }
   parser.on("-c CONTAMINATION_FILE", "--contamination=CONTAMINATION_FILE", "contamination file") { |c| con_file = c }
+  parser.on("-b CONTAMINATION_BED_FILE", "--contamination_bed=CONTAMINATION_BED_FILE", "contamination BED file") { |b| bed_file = b }
   parser.on("-h", "--help", "Show this help") do
     puts parser
     exit
@@ -34,7 +36,23 @@ def parse_decon_file(f)
   i
 end
 
-ids = parse_decon_file(con_file)
+def parse_decon_bed_file(f)
+  i = [] of String
+  File.each_line(f) do |line|
+    if /^(\S+)\s+\d+\s+\d+\s+REMOVE/i.match(line)
+      i << $1
+    end
+  end
+  i
+end
+
+ids = [] of String
+
+if !con_file.blank?
+  ids = parse_decon_file(con_file)
+elsif !bed_file.blank?
+  ids = parse_decon_bed_file(bed_file)
+end
 
 fp = GzipReader.new(fasta)
 fx = FastxReader.new(fp)

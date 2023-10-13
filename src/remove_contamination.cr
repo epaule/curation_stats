@@ -1,6 +1,6 @@
 #!/usr/bin/env crystal
 # uses Heng Li's fasta parser from Klib
-# uses a contamination file to strip out sequences from a fasta
+# uses a contamination BED file to strip out sequences from a fasta
 
 require "option_parser"
 require "klib"
@@ -13,7 +13,7 @@ fasta = ""
 OptionParser.parse do |parser|
   parser.banner = "Usage: curation_stats --contamination CONTAMINATION_FILE --fasta FASTAFILE"
   parser.on("-f FASTA_FILE", "--fasta=FASTA_FILE", "FASTA file (can be compressed)") { |f| fasta = f }
-  parser.on("-c CONTAMINATION_FILE", "--contamination=CONTAMINATION_FILE", "contamination file") { |c| con_file = c }
+  parser.on("-c CONTAMINATION_BED_FILE", "--contamination=CONTAMINATION_BED_FILE", "contamination BED file") { |c| con_file = c }
   parser.on("-h", "--help", "Show this help") do
     puts parser
     exit
@@ -28,7 +28,7 @@ end
 def parse_decon_file(f)
   i = [] of String
   File.each_line(f) do |line|
-    if /^REMOVE\s+(\S+)/i.match(line)
+    if /^(\S+)\s+\d+\s+\d+\s+REMOVE/i.match(line)
       i << $1
     end
   end
