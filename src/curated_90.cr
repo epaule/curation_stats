@@ -37,5 +37,5 @@ fx.each { |e|
 }
 
 puts <<-HERE
-curated basepairs	#{curated_bp}/#{total_bp} (#{sprintf("%.2f", curated_bp/total_bp*100)}%)
+curated basepairs	#{curated_bp}/#{total_bp} bp (#{sprintf("%.2f", curated_bp/total_bp*100)}%)
 HERE

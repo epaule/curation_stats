@@ -9,7 +9,9 @@ targets:
     main: src/curation_stats.cr
   remove_contamination:
     main: src/remove_contamination.cr
+  curated_90:
+    main: src/curated_90.cr
 
-crystal: 1.9.2
+crystal: 1.13.3
 
 license: MIT
