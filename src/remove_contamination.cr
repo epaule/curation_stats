@@ -12,8 +12,8 @@ fasta = ""
 
 OptionParser.parse do |parser|
   parser.banner = "Usage: curation_stats --contamination CONTAMINATION_FILE --fasta FASTAFILE"
-  parser.on("-f FASTA_FILE", "--fasta=FASTA_FILE", "FASTA file (can be compressed)") { |f| fasta = f }
-  parser.on("-c CONTAMINATION_BED_FILE", "--contamination=CONTAMINATION_BED_FILE", "contamination BED file") { |c| con_file = c }
+  parser.on("-f FASTA_FILE", "--fasta=FASTA_FILE", "FASTA file (can be compressed)") { |filename| fasta = filename }
+  parser.on("-c CONTAMINATION_BED_FILE", "--contamination=CONTAMINATION_BED_FILE", "contamination BED file") { |filename| con_file = filename }
   parser.on("-h", "--help", "Show this help") do
     puts parser
     exit
@@ -42,10 +42,10 @@ if File.exists?(fasta)
   fx = FastxReader.new(fp)
   cleaned_fasta = File.new("#{fasta}_cleaned", "w")
 
-  fx.each { |e|
-    unless ids.includes? e.name
-      cleaned_fasta.puts ">#{e.name}"
-      e.seq.scan(/.{1,60}/).each { |l| cleaned_fasta.puts l[0] }
+  fx.each { |entry|
+    unless ids.includes? entry.name
+      cleaned_fasta.puts ">#{entry.name}"
+      entry.seq.scan(/.{1,60}/).each { |line| cleaned_fasta.puts line[0] }
     end
   }
 end

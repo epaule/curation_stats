@@ -12,9 +12,9 @@ fasta = ""
 
 OptionParser.parse do |parser|
   parser.banner = "Usage: curation_stats --contamination CONTAMINATION_FILE --fasta FASTAFILE"
-  parser.on("-f FASTA_FILE", "--fasta=FASTA_FILE", "FASTA file of the assembly (can be compressed)") { |f| fasta = f }
-  parser.on("-c CONTAMINATION_FILE", "--contamination=CONTAMINATION_FILE", "contamination file") { |c| con_file = c }
-  parser.on("-b CONTAMINATION_BED_FILE", "--contamination_bed=CONTAMINATION_BED_FILE", "contamination BED file") { |b| bed_file = b }
+  parser.on("-f FASTA_FILE", "--fasta=FASTA_FILE", "FASTA file of the assembly (can be compressed)") { |filename| fasta = filename }
+  parser.on("-c CONTAMINATION_FILE", "--contamination=CONTAMINATION_FILE", "contamination file") { |filename| con_file = filename }
+  parser.on("-b CONTAMINATION_BED_FILE", "--contamination_bed=CONTAMINATION_BED_FILE", "contamination BED file") { |filename| bed_file = filename }
   parser.on("-h", "--help", "Show this help") do
     puts parser
     exit
